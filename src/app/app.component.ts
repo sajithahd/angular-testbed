@@ -57,20 +57,20 @@ export class AppComponent implements OnInit {
             }
         })
 
-        // this.dataService.fetchCountries()
-        //     .pipe(finalize(() => {
-        //         console.log("finalized");
-        //     }))
-        //     .subscribe({
-        //             next: countries => {
-        //                 console.log(countries);
-        //             }, error: e => {
-        //                 console.log("error");
-        //             }, complete: () => {
-        //                 console.log("completed");
-        //             }
-        //         }
-        //     )
+        this.dataService.fetchCountries()
+            .pipe(finalize(() => {
+                console.log("finalized");
+            }))
+            .subscribe({
+                    next: countries => {
+                        console.log(countries);
+                    }, error: e => {
+                        console.log("error");
+                    }, complete: () => {
+                        console.log("completed");
+                    }
+                }
+            )
 
 
         this.observerOperatorExample.subscribe(c => {
