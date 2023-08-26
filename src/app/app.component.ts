@@ -1,6 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {filter, finalize, find, interval, map, Observable, pipe, take} from "rxjs";
-import {Data} from "@angular/router";
+import {finalize, interval, map, Observable, take} from "rxjs";
 import {DataService} from "./services/data.service";
 
 @Component({
