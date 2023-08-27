@@ -1,0 +1,34 @@
+<label for="name">Name</label>
+<input type="text" id="name" [formControl]="name">
+
+
+<button (click)="updateName()">Update Name</button>
+
+
+<div>original {{name.value}}</div>
+<div>based on value change{{updatedValue}}</div>
+
+<hr>
+<br>
+<br>
+<br>
+<br>
+
+<form action="" [formGroup]="profile">
+    <label for="firstName">First Name</label>
+    <input type="text" id="firstName" formControlName="firstName">
+
+
+    <label for="lastName">Last Name</label>
+    <input type="text" id="lastName" formControlName="lastName">
+
+    <div formGroupName="address">
+        <label for="street">Street</label>
+        <input type="text" id="street" formControlName="street">
+        <label for="city">City</label>
+        <input type="text" id="city" formControlName="city">
+    </div>
+</form>
+
+<div>{{profile.value | json}}</div>
+<div>{{profile.valid}}</div>

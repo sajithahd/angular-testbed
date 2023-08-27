@@ -27,7 +27,9 @@ export class AppComponent implements OnInit {
 
     promise = new Promise((resolve, reject) => {
         console.log("1. inside promise");
-        resolve("4. resolved")
+        // resolve("4. resolved")
+
+        reject("promise rejected")
     })
 
     observerOperatorExample = interval(1000).pipe(
@@ -43,6 +45,8 @@ export class AppComponent implements OnInit {
 
         this.promise.then(p => {
             console.log(p);
+        }).catch(e=> {
+            console.log(e)
         })
 
 
