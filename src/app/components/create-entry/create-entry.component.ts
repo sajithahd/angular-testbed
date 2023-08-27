@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {map, Observable, take} from "rxjs";
 
 @Component({
@@ -13,14 +13,32 @@ export class CreateEntryComponent implements OnInit {
     updatedValue: string | null = null;
 
 
-    profile = new FormGroup({
+    constructor(private fb: FormBuilder) {
+    }
+
+    profile = this.fb.group({
+        firstName: ['', [Validators.required, Validators.email, Validators.pattern("")]],
+        lastName: [''],
+        address: this.fb.group({
+            street: [''],
+            city: ['']
+        }),
+        comments: this.fb.array([
+            this.fb.control('')
+        ])
+    })
+
+    /*profile = new FormGroup({
         firstName: new FormControl("", Validators.required),
         lastName: new FormControl(""),
         address: new FormGroup({
             street: new FormControl(""),
             city: new FormControl("")
         })
-    })
+    })*/
+    get comments(){
+        return this.profile.get('comments') as FormArray;
+    };
 
     ngOnInit() {
         this.name.valueChanges.subscribe(v => {
@@ -30,5 +48,24 @@ export class CreateEntryComponent implements OnInit {
 
     updateName() {
         this.name.setValue("sajjjj");
+    }
+
+    update() {
+        this.profile.patchValue({
+            firstName: "Sajj",
+            lastName: "Sajj",
+            address: {
+                street: "90",
+                city: "bne"
+            }
+        })
+    }
+
+    onSubmit() {
+        console.log(this.profile.value)
+    }
+
+    addComment() {
+        this.profile.controls.comments.push(this.fb.control(''))
     }
 }

@@ -14,7 +14,7 @@
 <br>
 <br>
 
-<form action="" [formGroup]="profile">
+<form action="" [formGroup]="profile" (ngSubmit)="onSubmit()">
     <label for="firstName">First Name</label>
     <input type="text" id="firstName" formControlName="firstName">
 
@@ -28,7 +28,22 @@
         <label for="city">City</label>
         <input type="text" id="city" formControlName="city">
     </div>
+
+    <hr>
+    <div formArrayName="comments">
+        <h4>comments section</h4>
+        <button (click)="addComment()">Add another comment</button>
+
+        <!--  <div *ngFor="let c of comments.controls; let i = index">        -->
+        <div *ngFor="let c of profile.controls.comments.controls; let i = index">
+            <label for="comment-{{i}}">Comment {{i + 1}}</label>
+            <input type="text" id="comment-{{i}}" [formControlName]="i">
+        </div>
+    </div>
+    <button type="submit">Submit</button>
 </form>
+
+<button (click)="update()">Update profile</button>
 
 <div>{{profile.value | json}}</div>
 <div>{{profile.valid}}</div>
