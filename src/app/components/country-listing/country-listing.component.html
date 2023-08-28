@@ -1,1 +1,11 @@
-<p>country-listing works!</p>
+<!--
+behaviour subject {{countriesb | json }}
+
+<hr>
+replay subject {{countriesr | json }}-->
+
+<div class="countries">
+    <div class="country" *ngFor="let c of countries">
+        <div>{{c.name?.official}}</div>
+    </div>
+</div>

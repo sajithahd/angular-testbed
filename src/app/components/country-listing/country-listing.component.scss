@@ -1,0 +1,30 @@
+.countries {
+  background: blue;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+
+  //flex-flow: row wrap;
+
+  //justify-content: space-between;
+  //justify-content: space-evenly;
+  justify-content: space-around;
+
+
+  //align-items: center;
+  //align-content: stretch;
+  padding: 0;
+  margin: 0;
+
+  .country {
+    background: tomato;
+    padding: 5px;
+    width: 200px;
+    height: 150px;
+    margin-top: 10px;
+    color: white;
+    font-weight: bold;
+    font-size: 1em;
+    text-align: center;
+  }
+}
