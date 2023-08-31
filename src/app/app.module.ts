@@ -7,12 +7,14 @@ import {HttpClientModule} from "@angular/common/http";
 import { CountryListingComponent } from './components/country-listing/country-listing.component';
 import { CreateEntryComponent } from './components/create-entry/create-entry.component';
 import {ReactiveFormsModule} from "@angular/forms";
+import { SignalsComponent } from './components/signals/signals.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         CountryListingComponent,
-        CreateEntryComponent
+        CreateEntryComponent,
+        SignalsComponent
     ],
     imports: [
         BrowserModule,

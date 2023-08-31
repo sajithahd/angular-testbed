@@ -37,7 +37,7 @@
         <!--  <div *ngFor="let c of comments.controls; let i = index">        -->
         <div *ngFor="let c of profile.controls.comments.controls; let i = index">
             <label for="comment-{{i}}">Comment {{i + 1}}</label>
-            <input type="text" id="comment-{{i}}" [formControlName]="i">
+            <input type="text" id="comment-{{i}}" formControlName="{{i}}">
         </div>
     </div>
     <button type="submit">Submit</button>

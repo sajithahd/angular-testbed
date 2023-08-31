@@ -1,17 +1,25 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {finalize, interval, map, Observable, take} from "rxjs";
 import {DataService} from "./services/data.service";
+import {CreateEntryComponent} from "./components/create-entry/create-entry.component";
+import {CountryListingComponent} from "./components/country-listing/country-listing.component";
 
 @Component({
     selector: 'app-root',
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
     title = 'angular-testbed';
+
+    @ViewChild(CountryListingComponent) countryList: CountryListingComponent;
 
     constructor(private dataService: DataService) {
 
+    }
+
+    ngAfterViewInit(): void {
+        console.log("numbers from child" + this.countryList.testData)
     }
 
 
@@ -45,7 +53,7 @@ export class AppComponent implements OnInit {
 
         this.promise.then(p => {
             console.log(p);
-        }).catch(e=> {
+        }).catch(e => {
             console.log(e)
         })
 
@@ -61,11 +69,13 @@ export class AppComponent implements OnInit {
         })
 
 
-
         this.observerOperatorExample.subscribe(c => {
             console.log(c);
         })
     }
 
 
+    selectedCountry(name: string) {
+        console.log("" + name)
+    }
 }

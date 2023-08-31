@@ -6,6 +6,6 @@ replay subject {{countriesr | json }}-->
 
 <div class="countries">
     <div class="country" *ngFor="let c of countries">
-        <div>{{c.name?.official}}</div>
+        <div (click)="selectCountry(c.name.official)">{{c.name?.official}}</div>
     </div>
 </div>

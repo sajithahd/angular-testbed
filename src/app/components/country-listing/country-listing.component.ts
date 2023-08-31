@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {CountryService} from "../../services/country.service";
 import {finalize} from "rxjs";
 import {DataService} from "../../services/data.service";
@@ -10,6 +10,9 @@ import {DataService} from "../../services/data.service";
 })
 export class CountryListingComponent implements OnInit {
 
+
+    @Output() selectedCountry: EventEmitter<string> = new EventEmitter<string>();
+    testData = "test"
     countriesb: any;
     countriesr: any = [];
 
@@ -36,7 +39,7 @@ export class CountryListingComponent implements OnInit {
             }))
             .subscribe({
                     next: countries => {
-                        this.countries = (countries as []).slice(0,15);
+                        this.countries = (countries as []).slice(0, 15);
                     }, error: e => {
                         console.log("error");
                     }, complete: () => {
@@ -45,5 +48,9 @@ export class CountryListingComponent implements OnInit {
                 }
             )
 
+    }
+
+    selectCountry(event: string) {
+        this.selectedCountry.emit(event)
     }
 }

@@ -1,5 +1,7 @@
 
-<app-create-entry></app-create-entry>
 
 <hr>
-<app-country-listing></app-country-listing>
+<app-country-listing (selectedCountry)="selectedCountry($event)"></app-country-listing>
+
+<router-outlet></router-outlet>
+
