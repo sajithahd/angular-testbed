@@ -14,14 +14,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
     @ViewChild(CountryListingComponent) countryList: CountryListingComponent;
 
-    constructor(private dataService: DataService) {
-
-    }
-
     ngAfterViewInit(): void {
         console.log("numbers from child" + this.countryList.testData)
     }
-
 
     observable = new Observable<string>(o => {
         setTimeout(() => {

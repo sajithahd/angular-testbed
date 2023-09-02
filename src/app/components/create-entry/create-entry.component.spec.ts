@@ -1,21 +1,43 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CreateEntryComponent } from './create-entry.component';
+import {CreateEntryComponent} from './create-entry.component';
+import {FormBuilder} from "@angular/forms";
+import {MockBuilder, MockedComponentFixture, MockRender} from "ng-mocks";
+import {AppModule} from "../../app.module";
+//
+// describe('CreateEntryComponent', () => {
+//   let component: CreateEntryComponent;
+//   let fixture: ComponentFixture<CreateEntryComponent>;
+//
+//   beforeEach(() => {
+//     TestBed.configureTestingModule({
+//       declarations: [CreateEntryComponent],
+//       imports: [ReactiveFormsModule]
+//     });
+//     fixture = TestBed.createComponent(CreateEntryComponent);
+//     component = fixture.componentInstance;
+//     fixture.detectChanges();
+//   });
+//
+//   it('should create', () => {
+//     expect(component).toBeTruthy();
+//   });
+// });
 
 describe('CreateEntryComponent', () => {
-  let component: CreateEntryComponent;
-  let fixture: ComponentFixture<CreateEntryComponent>;
+    let component: CreateEntryComponent;
+    let fixture: MockedComponentFixture<CreateEntryComponent, any>;
 
-  beforeEach(() => {
-    TestBed.configureTestingModule({
-      declarations: [CreateEntryComponent]
+    beforeEach(() => {
+        return MockBuilder([CreateEntryComponent], AppModule)
+            .provide(FormBuilder)
     });
-    fixture = TestBed.createComponent(CreateEntryComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
+    beforeEach(() => {
+        fixture = MockRender(CreateEntryComponent);
+        component = fixture.point.componentInstance;
+        fixture.detectChanges();
+    });
+
+    it('should create', () => {
+        expect(component).toBeTruthy();
+    });
 });
